@@ -14,6 +14,15 @@ const Main = () => {
     loading,
     resultData,
   } = useContext(Context);
+
+  // Function to handle key press event
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && input.trim()) {
+      onSent();
+      setInput('');
+    }
+  };
+
   return (
     <>
       <div className="main">
@@ -74,6 +83,7 @@ const Main = () => {
             <div className="search-box">
               <input
                 onChange={(event) => setInput(event.target.value)}
+                onKeyDown={handleKeyPress}
                 value={input}
                 type="text"
                 placeholder="Enter a prompt here"
@@ -91,7 +101,7 @@ const Main = () => {
               </div>
             </div>
             <p className="bottom-info">
-             Scalable Real-Time Data Generating app may display inaccurate info, including about people, so
+              Scalable Real-Time Data Generating app may display inaccurate info, including about people, so
               double-check its responses.{" "}
               <a href="https://support.google.com/gemini/answer/13594961?visit_id=638488069169109558-2959892032&p=privacy_notice&rd=1#privacy_notice">
                 Your privacy & GenAI Apps

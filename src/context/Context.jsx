@@ -71,9 +71,12 @@ const ContextProvider = (props) => {
     showResult,
     loading,
     resultData,
-    onSent,
+    onSent: (prompt) => {
+      onSent(prompt);
+    },
     newChat,
   };
+  
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>
   );
